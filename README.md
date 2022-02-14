@@ -63,15 +63,13 @@ nft deployed to: 0xFAb8b21b7d9A985902EbA8C2484474d5016D6f97
 ```
 
 ### Verify command on Polygon mumbai
-NFT Market contract
-
+NFT Market contract  
 Change the address to an actual deployed address.
 
 `npx hardhat verify --network mumbai 0x1b293497dc106904b71B7dC0F575217E3198E2A6`
 
-NFT contract
-
-Change the address to an actual deployed address.
-The second quated adress is the address of NFT Market.
+NFT contract  
+Change the address to an actual deployed address.  
+The second quated adress should be the address of NFT Market.
 
 `npx hardhat verify --network mumbai 0xFAb8b21b7d9A985902EbA8C2484474d5016D6f97 "0x1b293497dc106904b71B7dC0F575217E3198E2A6"`
