@@ -47,7 +47,7 @@ npm run dev
 
 To deploy on real networks, set the following variable in .env.
 ```
-NEXT_PUBLIC_WORKSPACE_URL=$CLIENT_URL
+NEXT_PUBLIC_WORKSPACE_URL=https://rpc-mumbai.maticvigil.com
 MNEMONIC=***
 INFURA_KEY=***
 ETHERSCAN_KEY=***
