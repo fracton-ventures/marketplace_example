@@ -45,7 +45,7 @@ npm run dev
 
 ### Configuration
 
-To deploy on Polygon Mumbai, set the following variable in .env.
+To deploy on Polygon Mumbai, set the following variables in .env.
 ```
 NEXT_PUBLIC_WORKSPACE_URL=https://rpc-mumbai.maticvigil.com
 MNEMONIC=***
@@ -70,7 +70,7 @@ Change the address to an actual deployed address.
 
 NFT contract  
 Change the address to an actual deployed address.  
-The second quated adress should be the address of NFT Market.
+The second quoted adress should be the address of NFT Market.
 
 `npx hardhat verify --network mumbai 0xFAb8b21b7d9A985902EbA8C2484474d5016D6f97 "0x1b293497dc106904b71B7dC0F575217E3198E2A6"`
 
