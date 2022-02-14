@@ -6,26 +6,6 @@ This is the codebase to go along with tbe blog post [Building a Full Stack NFT M
 
 ### Running this project
 
-#### Gitpod
-
-To deploy this project to Gitpod, follow these steps:
-
-1. Click this link to deploy
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/dabit3/polygon-ethereum-nextjs-marketplace)
-
-2. Import the RPC address given to you by GitPod into your MetaMask wallet
-
-This endpoint will look something like this:
-
-```
-https://8545-copper-swordtail-j1mvhxv3.ws-eu18.gitpod.io/
-```
-
-The chain ID should be 1337. If you have a localhost rpc set up, you may need to overwrite it.
-
-![MetaMask RPC Import](wallet.png)
-
 #### Local setup
 
 To run this project locally, follow these steps.
@@ -65,45 +45,33 @@ npm run dev
 
 ### Configuration
 
-To deploy to Polygon test or main networks, update the configurations located in __hardhat.config.js__ to use a private key and, optionally, deploy to a private RPC like Infura.
+To deploy on real networks, set the following variable in .env.
+```
+NEXT_PUBLIC_WORKSPACE_URL=$CLIENT_URL
+MNEMONIC=***
+INFURA_KEY=***
+ETHERSCAN_KEY=***
+POLYGONSCAN_KEY=***
+```
+### Deploy command on Polygon mumbai
+`npx hardhat run scripts/deploy.js --network mumbai`
 
-```javascript
-require("@nomiclabs/hardhat-waffle");
-const fs = require('fs');
-const privateKey = fs.readFileSync(".secret").toString().trim() || "01234567890123456789";
-
-// infuraId is optional if you are using Infura RPC
-const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
-
-module.exports = {
-  defaultNetwork: "hardhat",
-  networks: {
-    hardhat: {
-      chainId: 1337
-    },
-    mumbai: {
-      // Infura
-      // url: `https://polygon-mumbai.infura.io/v3/${infuraId}`
-      url: "https://rpc-mumbai.matic.today",
-      accounts: [privateKey]
-    },
-    matic: {
-      // Infura
-      // url: `https://polygon-mainnet.infura.io/v3/${infuraId}`,
-      url: "https://rpc-mainnet.maticvigil.com",
-      accounts: [privateKey]
-    }
-  },
-  solidity: {
-    version: "0.8.4",
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200
-      }
-    }
-  }
-};
+If the deploy succeeded, the result is like this:
+```
+nftMarket deployed to: 0x1b293497dc106904b71B7dC0F575217E3198E2A6
+nft deployed to: 0xFAb8b21b7d9A985902EbA8C2484474d5016D6f97
 ```
 
-If using Infura, update __.infuraid__ with your [Infura](https://infura.io/) project ID.
+### Verify command on Polygon mumbai
+NFT Market contract
+
+Change the address to an actual deployed address.
+
+`npx hardhat verify --network mumbai 0x1b293497dc106904b71B7dC0F575217E3198E2A6`
+
+NFT contract
+
+Change the address to an actual deployed address.
+The second quated adress is the address of NFT Market.
+
+`npx hardhat verify --network mumbai 0xFAb8b21b7d9A985902EbA8C2484474d5016D6f97 "0x1b293497dc106904b71B7dC0F575217E3198E2A6"`
