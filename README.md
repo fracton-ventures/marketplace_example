@@ -1,58 +1,64 @@
 ## Full stack NFT marketplace built with Polygon, Solidity, IPFS, & Next.js
 
-![Header](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/pfofv47dooojerkmfgr4.png)
-
-This is the codebase to go along with tbe blog post [Building a Full Stack NFT Marketplace on Ethereum with Polygon](https://dev.to/dabit3/building-scalable-full-stack-apps-on-ethereum-with-polygon-2cfb)
-
 ### Running this project
 
-#### Local setup
+## Preparation
 
-To run this project locally, follow these steps.
+### 1) Nodejs & npm
+To check nodejs version.
 
-1. Clone the project locally, change into the directory, and install the dependencies:
+`node -v`
 
-```sh
-git clone https://github.com/dabit3/polygon-ethereum-nextjs-marketplace.git
+To check npm version.
 
-cd polygon-ethereum-nextjs-marketplace
+`npm -v`
 
-# install using NPM or Yarn
-npm install
+### 2) Install packages
 
-# or
+Run following command to install packages
 
-yarn
+`npm install`
+
+### 3) Set secret.json
+
+See the Day5 text.
+
+Create secret.json
+
+`touch secret.json`
+
+Edit secret.json like below.
+
+```
+{
+    "providers": {
+        "infuraKey": " {YOUR INFURAKEY} ",
+        "etherscanKey": ""
+    },
+    "mnemonic": "test test test test test test test test test test test junk"
+}
 ```
 
-2. Start the local Hardhat node
+### 4) compile and test using Hardhat
+
+`npx hardhat compile`
+
+`npx hardhat test`
+
+### 4) Start the local Hardhat node
 
 ```sh
 npx hardhat node
 ```
 
-3. With the network running, deploy the contracts to the local network in a separate terminal window
+### 5) With the network running, deploy the contracts to the local network in a separate terminal window
 
 ```sh
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-4. Start the app
+---
 
-```
-npm run dev
-```
-
-### Configuration
-
-To deploy on Polygon Mumbai, set the following variables in .env.
-```
-NEXT_PUBLIC_WORKSPACE_URL=https://rpc-mumbai.maticvigil.com
-MNEMONIC=***
-INFURA_KEY=***
-ETHERSCAN_KEY=***
-POLYGONSCAN_KEY=***
-```
 ### Deploy command on Polygon Mumbai
 `npx hardhat run scripts/deploy.js --network mumbai`
 

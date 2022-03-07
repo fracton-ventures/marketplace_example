@@ -37,6 +37,6 @@ describe("NFTMarket", function() {
       }
       return item
     }))
-    console.log('items: ', items)
+    // console.log('items: ', items)
   })
 })

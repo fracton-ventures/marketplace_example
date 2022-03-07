@@ -1,13 +1,9 @@
 require("@nomiclabs/hardhat-waffle");
-const fs = require('fs');
-require('dotenv').config();
 require("@nomiclabs/hardhat-etherscan");
+const env = require("./secret.json");
 
-// const privateKey = fs.readFileSync(".secret").toString().trim() || "01234567890123456789";
-// const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
-
-const mnemnoc =
-  typeof process.env.MNEMONIC === 'undefined' ? '' : process.env.MNEMONIC
+const mnemonic =
+  typeof env.mnemonic === 'undefined' ? '' : env.mnemonic
 
 module.exports = {
   defaultNetwork: "hardhat",
@@ -17,18 +13,18 @@ module.exports = {
     },
     mumbai: {
       // Infura
-      url: `https://polygon-mumbai.infura.io/v3/${process.env.INFURA_KEY}`,
+      url: `https://polygon-mumbai.infura.io/v3/${env.providers.infuraKey}`,
       // url: "https://rpc-mumbai.matic.today",
       accounts: {
-        mnemonic: mnemnoc,
+        mnemonic: mnemonic,
       },
     },
     matic: {
       // Infura
-      url: `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+      url: `https://polygon-mainnet.infura.io/v3/${env.providers.infuraKey}`,
       // url: "https://rpc-mainnet.maticvigil.com",
       accounts: {
-        mnemonic: mnemnoc,
+        mnemonic: mnemonic,
       },
     }
   },
@@ -39,12 +35,6 @@ module.exports = {
         enabled: true,
         runs: 200
       }
-    }
-  },
-  etherscan: {
-    apiKey: {
-      arbitrumTestnet: process.env.ARBITRUM_KEY,
-      polygonMumbai: process.env.POLYGONSCAN_KEY
     }
   }
 };
